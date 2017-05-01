@@ -1,0 +1,38 @@
+/* 
+==============================================
+CONTENT:	NYT Article Search Assignment
+AUTHOR:		Gunnar Normand
+==============================================
+
+TABLE OF CONTENTS:
+
+1. Main Layout
+2. Content
+
+==============================================
+*/
+/* 1. Main Layout ================================= */
+* {
+  box-sizing: border-box; }
+
+html {
+  font-family: GillSans, Calibri, Trebuchet, sans-serif; }
+
+body {
+  background: transparent; }
+
+/* 2. Content ================================= */
+.row:nth-of-type(1) {
+  margin-bottom: 45px; }
+
+nav form {
+  height: 100%;
+  width: 100%;
+  position: absolute; }
+
+.btn-floating.halfway-fab {
+  position: absolute;
+  left: 50%;
+  bottom: 0; }
+
+/*# sourceMappingURL=main.css.map */

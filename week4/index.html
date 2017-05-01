@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Week 4 Assignment</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+	<style type="text/css">
+	input[type="search"]::-webkit-input-placeholder {
+	  color: #fff;
+	}
+	.header {
+	    color: #4fc3f7;
+	    font-weight: 300;
+	}
+	h1, h2, h3, h4, h5, h6 {
+	    -webkit-font-smoothing: antialiased;
+	}
+	h2 {
+	    font-size: 3.56rem;
+	    line-height: 110%;
+	    margin: 1.78rem 0 1.424rem 0;
+	}
+	.collection-item span.badge {
+	    position: absolute;
+	    bottom: 0;
+	    margin-bottom: .5em;
+	}
+	.logo-img {
+		max-width: 100%;
+		height: 64px;
+		padding: 0.5em;
+	}
+	#quick {
+		margin-top: 139px;
+	}
+	#timeline {
+		margin-top: 139px;
+	}
+	#advanced {
+		margin-top: 139px;
+	}
+	.custom-card-bg {
+		min-height: 100px !important;
+		max-height: 500px !important;
+	}
+	.input-field .prefix.active {
+		color: #b3e5fc !important;
+	}
+	input:not([type]):focus:not([readonly])+label, input[type=text]:focus:not([readonly])+label, input[type=password]:focus:not([readonly])+label, input[type=email]:focus:not([readonly])+label, input[type=url]:focus:not([readonly])+label, input[type=time]:focus:not([readonly])+label, input[type=date]:focus:not([readonly])+label, input[type=datetime]:focus:not([readonly])+label, input[type=datetime-local]:focus:not([readonly])+label, input[type=tel]:focus:not([readonly])+label, input[type=number]:focus:not([readonly])+label, input[type=search]:focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label {
+	    color: #4fc3f7;
+	}
+	input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+	    border-bottom: 1px solid #4fc3f7;
+	    box-shadow: 0 1px 0 0 #4fc3f7;
+	}
+	input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+	    border-bottom: 10px solid #4fc3f7;
+	}
+	.btn-floating,
+	.btn {
+	    background-color: #4fc3f7;
+	}
+	.btn-floating:hover,
+	.btn:hover {
+    	background-color: #b3e5fc;
+    }
+    .btn:focus, 
+    .btn-large:focus, 
+    .btn-floating:focus {
+        background-color: #b3e5fc;
+    }
+	.secondary-content {
+	    color: #4fc3f7;
+	}
+	[type="checkbox"]:checked+label:before {
+	    border-right: 2px solid #4fc3f7;
+	    border-bottom: 2px solid #4fc3f7;
+	}
+	.dropdown-content li>a, 
+	.dropdown-content li>span {
+		color: #4fc3f7;
+	}
+	i.material-icons.prefix {
+	    color: #4fc3f7;
+	}
+	.select-wrapper input.select-dropdown {
+	    border-bottom: 10px solid #4fc3f7;
+	}
+	</style>
+</head>
+<body>
+	<div class="navbar-fixed ">
+		<nav class="nav-extended light-blue lighten-2">
+			<div class="nav-wrapper">
+				<img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png" class="logo-img" height="64" width="auto">
+				<a href="#" class="brand-logo">Twitter Search Utility</a>
+			</div>
+			<div class="nav-content light-blue lighten-2">
+				<ul class="tabs tabs-transparent">
+					<li class="tab"><a class="active" href="#quick">Quick Search</a></li>
+					<li class="tab"><a href="#timeline">Timeline Search</a></li>
+					<li class="tab"><a href="#advanced">Advanced Search</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	
+
+
+
+
+
+
+	<div id="quick">
+		<div class="row">
+			<div class="col s12 center-align">
+				<h2 class="header">Search Tweets</h2>
+			</div>
+		</div>
+		<div class="container">
+			<nav>
+				<div class="nav-wrapper light-blue lighten-2">
+					<form name="search">
+						<div class="input-field white-text">
+							<input id="search" type="search" name="q" placeholder="Quick Search.."  data-length="10" class="flow-text" required>
+							<label class="label-icon" for="search"><i class="material-icons">search</i></label>
+							<i class="material-icons">close</i>
+						</div>
+					</form>
+				</div>
+			</nav>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col s12">
+					<ul id="quickResults" class="collection">
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+
+
+
+
+	<div id="timeline">
+		<div class="row">
+			<div class="col s12 center-align">
+				<h2 class="header">Timeline Search</h2>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<form name="timeline" class="col s12">
+					<div class="row">
+						<div class="input-field col s12">
+							<i class="material-icons prefix">account_circle</i>
+							<input name="screen_name" id="icon_prefix1" type="text" class="validate" data-length="10">
+							<label for="icon_prefix1">Username</label>
+						</div>
+						<div class="col s12 center-align">
+							<button class="btn-floating btn-large waves-effect waves-light" type="submit">
+								<i class="material-icons right">timeline</i>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>	
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col s12">
+					<ul id="timelineResults" class="collection">
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+	<div id="advanced">
+		<div class="row">
+			<div class="col s12 center-align">
+				<h2 class="header">Custom Search</h2>
+			</div>
+		</div>		
+		<div class="container">
+			
+			<form name="adv_search" class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">find_in_page</i>
+					<input name="adv_q" id="icon_prefix2" type="text" class="validate" data-length="10">
+					<label for="icon_prefix2">Search Term</label>
+				</div>
+				<div class="input-field col s12">
+					<input name="count" type="number" value="15" />
+					<label>Search Limit:</label>
+				</div>
+				<div class="input-field col s12">
+					<select name="result_type">
+						<option value="mixed" selected>Default</option>
+						<option value="popular">Most popular</option>
+						<option value="recent">Most recent</option>
+					</select>
+					<label>Result Type:</label>
+				</div>
+				<div class="col s12 center-align">
+					<button class="btn btn-large waves-effect waves-light" type="submit">search
+						<i class="material-icons right">send</i>
+					</button>
+				</div>
+			</form>
+		</div>
+		<div class="container">
+			<div id="advancedResults" class="row">
+				
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+
+
+
+
+
+
+	
+
+	<div class="fixed-action-btn toolbar">
+		<a class="btn-floating btn-large light-blue lighten-2">
+			<i class="large material-icons">delete_sweep</i>
+		</a>
+		<ul>
+			<li class="waves-effect waves-light">
+				<a href="#!" id="clear-quick">clear quick search</a>
+			</li>
+			<li class="waves-effect waves-light">
+				<a href="#!" id="clear-timeline">clear timeline search</a>
+			</li>
+			<li class="waves-effect waves-light">
+				<a href="#!" id="clear-custom">clear advanced search</a>
+			</li>
+			<li class="waves-effect waves-light">
+				<a href="#!" id="clear-all">clear all</a>
+			</li>
+		</ul>
+	</div>
+
+
+
+
+
+
+
+	
+
+
+
+
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+	<script type="text/javascript" src="js/week5.js"></script>
+</body>
+</html>
