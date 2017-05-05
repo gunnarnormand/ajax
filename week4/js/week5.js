@@ -127,27 +127,27 @@ var TwitterApi = (function() {
 	}
 
 	function processSearchResults(searchData) {
+		const url = ((http|https)?:\/\/\S+)/g;
 		let tweets = searchData.statuses;
-		// console.log(tweets[0]);
 		tweets.forEach(tweet => {
-			$quickResultsList.insertAdjacentHTML('afterbegin', `
-				<li class="collection-item avatar">
-					<img src="${tweet.user.profile_image_url}" class="circle">
-					<span class="title">${tweet.user.name}</span>
-					<p>${tweet.text}</p>
-					<br />
-					<span class="new badge blue" data-badge-caption="retweets">${tweet.retweet_count}</span>
-			    </li>
-			`);
+			let tweetString = tweet.text;
+			let urlMatches = tweetString.match(url);
+			console.log(urlMatches)
 		});
+		
+		//var processedString = string.replace(url, '<a href="$1">$1</a> ' )
+
+
+		//displayTweets(tweets);
 	}
 
 	function processTimelineResults(timelineData) {
+		console.log(timelineData);
 		let users = timelineData;
-		// console.log(users);
+		//console.log(users);
 		users.forEach(user => {
 			$timelineResultsList.insertAdjacentHTML('afterbegin', `
-				<li class="collection-item avatar">
+				<li class="scollection-item avatar">
 					<img src="${user.profile_image_url}" class="circle">
 					<span class="title">${user.screen_name}</span>
 					<p>${user.name}</p>
@@ -177,6 +177,23 @@ var TwitterApi = (function() {
 						</div>
 					</div>
 				</div>
+			`);
+		});
+	}
+
+	function displayTweets(tweets) {
+
+		//let tweets = searchData.statuses;
+		console.log(tweets);
+		tweets.forEach(tweet => {
+			$quickResultsList.insertAdjacentHTML('afterbegin', `
+				<li class="collection-item avatar">
+					<img src="${tweet.user.profile_image_url}" class="circle">
+					<span class="title">${tweet.user.name}</span>
+					<p>${tweet.text}</p>
+					<br />
+					<span class="new badge blue" data-badge-caption="retweets">${tweet.retweet_count}</span>
+			    </li>
 			`);
 		});
 	}

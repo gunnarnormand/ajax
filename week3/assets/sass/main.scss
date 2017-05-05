@@ -45,3 +45,21 @@ nav form {
     left: 50%;
     bottom: 0;
 }
+
+.header {
+
+    &::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: $nytgreen;
+        transition: width .25s;
+        will-change: width;
+    }
+
+    &:hover::after {
+        width: 100%;
+        //transition: width .3s;
+    }
+}

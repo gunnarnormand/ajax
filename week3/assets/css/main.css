@@ -35,4 +35,16 @@ nav form {
   left: 50%;
   bottom: 0; }
 
+.header::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #63bb46;
+  transition: width .25s;
+  will-change: width; }
+
+.header:hover::after {
+  width: 100%; }
+
 /*# sourceMappingURL=main.css.map */
