@@ -127,18 +127,30 @@ var TwitterApi = (function() {
 	}
 
 	function processSearchResults(searchData) {
-		const url = ((http|https)?:\/\/\S+)/g;
+		
+		const url = /(https?:\/\/\S+)/g;
+		const hashtag = /(^|\s)#(\w+)/g;
+		const username = /(^|\s)@(\w+)/g;
+
+
 		let tweets = searchData.statuses;
 		tweets.forEach(tweet => {
 			let tweetString = tweet.text;
-			let urlMatches = tweetString.match(url);
-			console.log(urlMatches)
-		});
+			
+			//let hashtagMatches = tweetString.match(hashtag);
+			let processedHashtag = tweetString.replace(url, '<a href="$1">$1</a>');
+
+			//let urlMatches = tweetString.match(url);
+			let processedUrl = processedHashtag.replace(hashtag, '$1#<a href="http://www.twitter.com/$2">$2</a>');
+			
+			//let usernameMatches = tweetString.match(username);
+			let processedUsername = processedUrl.replace(username, '$1@<a href="http://www.twitter.com/$2">$2</a>');
 		
-		//var processedString = string.replace(url, '<a href="$1">$1</a> ' )
-
-
-		//displayTweets(tweets);
+			//console.log(processedUsername);
+			
+			displayTweets(processedUsername);
+			
+		});
 	}
 
 	function processTimelineResults(timelineData) {
@@ -181,21 +193,30 @@ var TwitterApi = (function() {
 		});
 	}
 
-	function displayTweets(tweets) {
+	function displayTweets(tweet) {
 
-		//let tweets = searchData.statuses;
-		console.log(tweets);
-		tweets.forEach(tweet => {
+		console.log(tweet);
+
+	
 			$quickResultsList.insertAdjacentHTML('afterbegin', `
-				<li class="collection-item avatar">
-					<img src="${tweet.user.profile_image_url}" class="circle">
-					<span class="title">${tweet.user.name}</span>
-					<p>${tweet.text}</p>
-					<br />
-					<span class="new badge blue" data-badge-caption="retweets">${tweet.retweet_count}</span>
-			    </li>
+					
+				<p>${tweet}</p>
+						
 			`);
-		});
+
+		
+
+		// tweets.forEach(tweet => {
+		// 	$quickResultsList.insertAdjacentHTML('afterbegin', `
+		// 		<li class="collection-item avatar">
+		// 			<img src="${tweet.user.profile_image_url}" class="circle">
+		// 			<span class="title">${tweet.user.name}</span>
+		// 			<p>${tweet.text}</p>
+		// 			<br />
+		// 			<span class="new badge blue" data-badge-caption="retweets">${tweet.retweet_count}</span>
+		// 	    </li>
+		// 	`);
+		// });
 	}
 
 	var init = function() {
