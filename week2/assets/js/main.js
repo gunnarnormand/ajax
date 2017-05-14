@@ -236,17 +236,17 @@ const googleMapsSearch = (function(){
 		  }
 		];
   	
-  	const map = new google.maps.Map($map,{
-  		center: startingLocation,
-  		zoom: 12,
-  		styles: mapStyles
-  	});
+	  	const map = new google.maps.Map($map,{
+	  		center: startingLocation,
+	  		zoom: 12,
+	  		styles: mapStyles
+	  	});
 
-  	function resetMarkers() {
-  		markers.forEach( (marker) => {
-  			marker.setMap(null);
-  		});
-  	}
+	  	function resetMarkers() {
+	  		markers.forEach( (marker) => {
+	  			marker.setMap(null);
+	  		});
+	  	}
   		 
 		$searchForm.addEventListener('submit', (e) => {
 			e.preventDefault();  
@@ -296,7 +296,7 @@ const googleMapsSearch = (function(){
 					  position: results.geometry.location,
 					  animation: google.maps.Animation.BOUNCE,
 					  icon: img,
-					  map: map
+					  map: $map
 					});
 					
 					markers.push(marker);
